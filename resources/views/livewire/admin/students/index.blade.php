@@ -16,20 +16,19 @@ new class extends Component {
     public $school_class_id;
     public bool $isEditMode = false;
 
-    public function mount(?int $student_id = null)
+    // Replace mount with loadStudent method
+    public function loadStudent($studentId)
     {
-        if ($student_id) {
-            $student = Student::find($student_id);
-            if ($student) {
-                $this->student_id = $student->id;
-                $this->name = $student->name;
-                $this->email = $student->email;
-                $this->phone = $student->phone;
-                $this->address = $student->address;
-                $this->date_of_birth = $student->date_of_birth;
-                $this->school_class_id = $student->school_class_id;
-                $this->isEditMode = true;
-            }
+        $student = Student::find($studentId);
+        if ($student) {
+            $this->student_id = $student->id;
+            $this->name = $student->name;
+            $this->email = $student->email;
+            $this->phone = $student->phone;
+            $this->address = $student->address;
+            $this->date_of_birth = $student->date_of_birth;
+            $this->school_class_id = $student->school_class_id;
+            $this->isEditMode = true;
         }
     }
 
@@ -173,7 +172,7 @@ new class extends Component {
                         <td>{{ $student->phone }}</td>
                         <td>{{ $student->schoolClass?->name }}</td>
                         <td>
-                            <button wire:click="mount({{ $student->id }})">Edit</button>
+                            <button wire:click="loadStudent({{ $student->id }})">Edit</button>
                             <button wire:click="delete({{ $student->id }})" 
                                     onclick="return confirm('Are you sure?')">Delete</button>
                         </td>

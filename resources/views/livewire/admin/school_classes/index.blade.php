@@ -11,16 +11,15 @@ new class extends Component {
     public $description;
     public bool $isEditMode = false;
 
-    public function mount(?int $class_id = null)
+    // Replace mount with loadClass method
+    public function loadClass($classId)
     {
-        if ($class_id) {
-            $class = SchoolClass::find($class_id);
-            if ($class) {
-                $this->class_id = $class->id;
-                $this->name = $class->name;
-                $this->description = $class->description;
-                $this->isEditMode = true;
-            }
+        $class = SchoolClass::find($classId);
+        if ($class) {
+            $this->class_id = $class->id;
+            $this->name = $class->name;
+            $this->description = $class->description;
+            $this->isEditMode = true;
         }
     }
 
@@ -114,7 +113,7 @@ new class extends Component {
                         <td>{{ $class->description }}</td>
                         <td>{{ $class->students_count }}</td>
                         <td>
-                            <button wire:click="mount({{ $class->id }})">Edit</button>
+                            <button wire:click="loadClass({{ $class->id }})">Edit</button>
                             <button wire:click="delete({{ $class->id }})" 
                                     onclick="return confirm('Are you sure?')">Delete</button>
                         </td>
