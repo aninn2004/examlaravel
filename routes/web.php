@@ -14,13 +14,16 @@ Route::view('dashboard', 'dashboard')
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
-    Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
-    Volt::route('settings/password', 'settings.password')->name('settings.password');
-    Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
-    Volt::route('/admin/students', 'admin.students.index')
+    Volt::route('settings/profile', 'settings.profile')
+        ->name('settings.profile');
+    Volt::route('settings/password', 'settings.password')
+        ->name('settings.password');
+    Volt::route('settings/appearance', 'settings.appearance')
+        ->name('settings.appearance');
+    Volt::route('admin/students', 'admin.students.index')
         ->name('admin.students');
-    Volt::route('/admin/school-classes', 'admin.school_classes.index')
+    Volt::route('admin/school-classes', 'admin.school_classes.index')
         ->name('admin.school_classes');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
