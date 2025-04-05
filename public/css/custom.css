@@ -1,0 +1,41 @@
+/* General Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Dashboard Styles */
+.dashboard-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.dashboard-button {
+    padding: 12px 24px;
+    background: #3490dc;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.dashboard-button:hover {
+    background: #2779bd;
+}
+
+.dashboard-button.green {
+    background: #38a169;
+}
+
+.dashboard-button.green:hover {
+    background: #2f855a;
+}
